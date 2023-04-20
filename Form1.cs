@@ -58,5 +58,11 @@ namespace LabWork3
                 btnSalary.Text = "Медианная зарплата";
             }
         }
+
+        private void btnSex_Click(object sender, EventArgs e)
+        {
+            Var14Form var14 = new Var14Form();
+            var14.Show();
+        }
     }
 }
