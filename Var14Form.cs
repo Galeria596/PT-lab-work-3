@@ -13,11 +13,11 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace LabWork3
 {
-    public partial class Var14Form : Form
+    public partial class GalyaForm : Form
     {
-        private Var14 var14;
+        private GalyaPopulation var14;
 
-        public Var14Form()
+        public GalyaForm()
         {
             InitializeComponent();
         }
@@ -27,27 +27,11 @@ namespace LabWork3
 
         }
 
-        // Для вывода графика
-        private void btnShowChart_Click(object sender, EventArgs e)
-        {
-            /*            // Get the data from the Excel table.
-                        string excelFilePath = @"D:\programming-technologies\population_Data.xlsx";
-                        string worksheetName = "Subjects";
-                        string range = "B2:D8";
-
-                        // Set the chart's data source.
-                        chartPopulation.DataSource = excelFilePath + "!" + worksheetName + "!" + range;*/
-
-            var14 = new Var14();
-
-            var14.ChartReader(chartPopulation);
-        }
-
         // Для вывода таблицы
         private void btnShowGrid_Click(object sender, EventArgs e)
         {
             // Create a new instance of Var14.
-            var14 = new Var14();
+            var14 = new GalyaPopulation();
 
             // Open the file dialog.
             openFileDialog1.ShowDialog();
@@ -56,7 +40,7 @@ namespace LabWork3
             string path = openFileDialog1.FileName;
 
             // Read the Excel file.
-            var14.ExcelFileReader(path, gridPopulation);
+            var14.ExcelFileReader(path, gridPopulation, chartPopulation);
         }
     }
 }

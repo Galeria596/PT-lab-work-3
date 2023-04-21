@@ -33,7 +33,6 @@
             this.btnSalary = new System.Windows.Forms.Button();
             this.btnLangRU = new System.Windows.Forms.Button();
             this.btnLangEN = new System.Windows.Forms.Button();
-            this.btnSex = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnInflation
@@ -128,24 +127,12 @@
             this.btnLangEN.UseVisualStyleBackColor = false;
             this.btnLangEN.Click += new System.EventHandler(this.btnLangEN_Click);
             // 
-            // btnSex
-            // 
-            this.btnSex.AutoSize = true;
-            this.btnSex.Location = new System.Drawing.Point(86, 112);
-            this.btnSex.Name = "btnSex";
-            this.btnSex.Size = new System.Drawing.Size(81, 30);
-            this.btnSex.TabIndex = 17;
-            this.btnSex.Text = "SEX";
-            this.btnSex.UseVisualStyleBackColor = true;
-            this.btnSex.Click += new System.EventHandler(this.btnSex_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(984, 561);
-            this.Controls.Add(this.btnSex);
             this.Controls.Add(this.btnLangEN);
             this.Controls.Add(this.btnLangRU);
             this.Controls.Add(this.btnSalary);
@@ -159,7 +146,6 @@
             this.Text = "Lab-3          ";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -169,7 +155,6 @@
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btnLangRU;
         private System.Windows.Forms.Button btnLangEN;
-        private System.Windows.Forms.Button btnSex;
     }
 }
 

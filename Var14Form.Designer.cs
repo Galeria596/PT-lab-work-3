@@ -1,6 +1,6 @@
 ﻿namespace LabWork3
 {
-    partial class Var14Form
+    partial class GalyaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,11 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Var14Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GalyaForm));
             this.gridPopulation = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnShowChart = new System.Windows.Forms.Button();
-            this.chartPopulation = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnShowGrid = new System.Windows.Forms.Button();
+            this.chartPopulation = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.gridPopulation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPopulation)).BeginInit();
             this.SuspendLayout();
@@ -54,39 +53,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnShowChart
-            // 
-            this.btnShowChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(184)))));
-            this.btnShowChart.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnShowChart.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnShowChart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(127)))), ((int)(((byte)(198)))));
-            this.btnShowChart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(111)))), ((int)(((byte)(192)))));
-            this.btnShowChart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShowChart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowChart.ForeColor = System.Drawing.Color.White;
-            this.btnShowChart.Location = new System.Drawing.Point(387, 490);
-            this.btnShowChart.Margin = new System.Windows.Forms.Padding(12, 14, 12, 14);
-            this.btnShowChart.Name = "btnShowChart";
-            this.btnShowChart.Size = new System.Drawing.Size(200, 48);
-            this.btnShowChart.TabIndex = 17;
-            this.btnShowChart.Text = "Show Population Chart";
-            this.btnShowChart.UseVisualStyleBackColor = false;
-            this.btnShowChart.Click += new System.EventHandler(this.btnShowChart_Click);
-            // 
-            // chartPopulation
-            // 
-            this.chartPopulation.BackColor = System.Drawing.Color.Silver;
-            this.chartPopulation.BorderlineColor = System.Drawing.Color.DimGray;
-            chartArea1.Name = "ChartArea1";
-            this.chartPopulation.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartPopulation.Legends.Add(legend1);
-            this.chartPopulation.Location = new System.Drawing.Point(424, 95);
-            this.chartPopulation.Name = "chartPopulation";
-            this.chartPopulation.Size = new System.Drawing.Size(532, 323);
-            this.chartPopulation.TabIndex = 18;
-            this.chartPopulation.Text = "chart1";
             // 
             // btnShowGrid
             // 
@@ -107,21 +73,34 @@
             this.btnShowGrid.UseVisualStyleBackColor = false;
             this.btnShowGrid.Click += new System.EventHandler(this.btnShowGrid_Click);
             // 
-            // Var14Form
+            // chartPopulation
+            // 
+            this.chartPopulation.BackColor = System.Drawing.Color.Silver;
+            this.chartPopulation.BorderlineColor = System.Drawing.Color.DimGray;
+            chartArea1.Name = "ChartArea1";
+            this.chartPopulation.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartPopulation.Legends.Add(legend1);
+            this.chartPopulation.Location = new System.Drawing.Point(367, 12);
+            this.chartPopulation.Name = "chartPopulation";
+            this.chartPopulation.Size = new System.Drawing.Size(1205, 461);
+            this.chartPopulation.TabIndex = 20;
+            this.chartPopulation.Text = " ";
+            // 
+            // GalyaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(984, 561);
-            this.Controls.Add(this.btnShowGrid);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.chartPopulation);
-            this.Controls.Add(this.btnShowChart);
+            this.Controls.Add(this.btnShowGrid);
             this.Controls.Add(this.gridPopulation);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Var14Form";
+            this.Name = "GalyaForm";
             this.Text = "Population";
             this.Load += new System.EventHandler(this.Var14Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridPopulation)).EndInit();
@@ -133,8 +112,7 @@
         #endregion
         private System.Windows.Forms.DataGridView gridPopulation;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button btnShowChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartPopulation;
         private System.Windows.Forms.Button btnShowGrid;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPopulation;
     }
 }

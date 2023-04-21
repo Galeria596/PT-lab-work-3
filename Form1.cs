@@ -34,7 +34,8 @@ namespace LabWork3
 
         private void btnPopulation_Click(object sender, EventArgs e)
         {
-
+            GalyaForm formPopulation = new GalyaForm();
+            formPopulation.Show();
         }
 
         // Смена языка на енгельский (Если идея - хуита, то можно потом делитнуть)
@@ -57,12 +58,6 @@ namespace LabWork3
                 btnPopulation.Text = "Население";
                 btnSalary.Text = "Медианная зарплата";
             }
-        }
-
-        private void btnSex_Click(object sender, EventArgs e)
-        {
-            Var14Form var14 = new Var14Form();
-            var14.Show();
         }
     }
 }

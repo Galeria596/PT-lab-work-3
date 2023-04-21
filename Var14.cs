@@ -13,7 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 namespace LabWork3
 {
     // Класс с основыми методами для формы
-    public class Var14
+    public class GalyaPopulation
     {
         /*        public void meth()
                 {
@@ -46,37 +46,75 @@ namespace LabWork3
                 }*/
 
         // Считывает данные из Excel файла и выводит в DataGridView
-        public void ExcelFileReader(string path, DataGridView dataGrid)
+        public void ExcelFileReader(string path, DataGridView dataGrid, Chart chart)
         {
+
             // Open the Excel file.
             using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
             {
                 // Создание ридера для чтения Excel файла
                 var reader = ExcelReaderFactory.CreateReader(stream);
 
-                // Запись данных их таблицы в переменную
+                // Запись данных из таблиц в переменную
                 var result = reader.AsDataSet();
 
-                // Получение всех таблиц из файла
-                var tables = result.Tables.Cast<DataTable>();
+                // Добавление первой таблицы в качестве источника для DataGrig
+                dataGrid.DataSource = result.Tables[0];
 
-                // Добавление таблиц в DataGrid
-                foreach (var table in tables)
+                //var cellValue = result.Tables[0].Rows[1][0].ToString();
+                for (int i = 1; i < result.Tables[0].Rows.Count; i++)
                 {
-                    dataGrid.DataSource = table;
-                }
+                    string cellName = result.Tables[0].Rows[i][0].ToString();
 
+                    // Создание новой серии графика с именем субъекта
+                    var series = new Series(cellName);
 
-                // SIMPLIFY
-                /*foreach (DataRow ds in result.Tables[0].Rows)
-                {
-                    if (ds[0].ToString() != "Subject")
+                    for (int j = 1; j < result.Tables[0].Columns.Count; j++)
                     {
-                        var series = new Series(ds[0].ToString());
-
-
-                        Console.WriteLine(ds[0]);
+                        series.Points.AddXY(2023-j, result.Tables[0].Rows[i][j]);
+                        Console.WriteLine(series.Points[j-1]);
                     }
+                    chart.Series.Add(series);
+                    series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                }
+                /*foreach (DataRow tableRow in result.Tables[0].Rows)
+                {
+                    // Проверка на 1 элемент, который содержит название колонки
+                    if (tableRow.ToString() != "Subject")
+                    {
+                        // Создание новой серии графика с именем субъекта
+                        var series = new Series(tableRow.ToString());
+
+                        var cols = result.Tables[0].Columns;
+
+                        //int subjectPopulationData = result.Tables[0].Columns;
+
+                        //series.Points.AddXY(tableColumns.ToString());
+
+                        //chart.Series.Add(series);
+                    }
+
+
+                }*/
+
+                /*foreach (DataColumn tableColumns in result.Tables[0].Columns)
+                {
+                    // Проверка на 1 элемент, который содержит название колонки
+                    if (tableColumns.ToString() != "Subject")
+                    {
+                        // Создание новой серии графика с именем субъекта
+                        var series = new Series(tableColumns. *//*.ToString()*//*);
+
+                        var cols = result.Tables[0].Columns;
+
+                        //int subjectPopulationData = result.Tables[0].Columns;
+
+                        //series.Points.AddXY(tableColumns.ToString());
+
+                        //chart.Series.Add(series);
+                    }
+
+
                 }*/
 
             }
@@ -88,21 +126,34 @@ namespace LabWork3
         Выводит график по данным из таблицы Excel.
         Еще не готов.
         */
-        public void ChartReader(/*string excelFilePath, string worksheetName, string range, */Chart chart)
+        public void ChartReader(Chart chart, String cellName, int collumnsCount)
         {
+            // Создание новой серии графика с именем субъекта
+            var seriesn = new Series(cellName);
+
+            for (int i = 1; i < collumnsCount; i++)
+            {
+                // seriesn.Points.AddXY()
+            }
+
+
+            //chart.Series.Add(series);
+
+
+
             // create a new series and set its name
-            var series1 = new Series("Moscow");
+            /*var series1 = new Series("Moscow");
 
-            // add data points to the series
-            series1.Points.AddXY(1, 2);
-            series1.Points.AddXY(2, 3);
-            series1.Points.AddXY(3, 4);
+              // add data points to the series
+              series1.Points.AddXY(1, 2);
+              series1.Points.AddXY(2, 3);
+              series1.Points.AddXY(3, 4);
 
-            // set the chart type for the series
-            series1.ChartType = SeriesChartType.Line;
+              // set the chart type for the series
+              series1.ChartType = SeriesChartType.Line;
 
-            // add the series to the chart
-            chart.Series.Add(series1);
+              // add the series to the chart
+              chart.Series.Add(series1);*/
 
 
         }
