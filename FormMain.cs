@@ -24,7 +24,8 @@ namespace LabWork3
 
         private void btnInflation_Click(object sender, EventArgs e)
         {
-
+            Form form = new InflationForm();
+            form.Show();
         }
 
         private void btnSalary_Click(object sender, EventArgs e)
