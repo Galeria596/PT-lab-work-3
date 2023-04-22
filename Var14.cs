@@ -1,8 +1,10 @@
 ﻿using ExcelDataReader;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -11,7 +13,7 @@ namespace LabWork3
     public class GalyaPopulation
     {
         // Считывает данные из Excel файла и выводит их в таблицу и график.
-        public void ExcelFileReader(string excelFilePath, DataGridView dataGridView, Chart chartControl)
+        public void DisplayExcelData(string excelFilePath, DataGridView dataGridView, Chart chartControl)
         {
             try
             {
@@ -19,22 +21,29 @@ namespace LabWork3
                 using (var stream = File.Open(excelFilePath, FileMode.Open, FileAccess.Read))
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
-                    // Запись данных из таблиц в переменную.
+                    // Запись данных из таблиц.
                     var tableData = reader.AsDataSet();
 
                     // Добавление таблицы с полученными данными в форму.
                     dataGridView.DataSource = tableData.Tables[0];
 
-                    // Создание стиля для клеточек-хедеров
-                    DataGridViewCellStyle dataGridViewHeadersStyle = new DataGridViewCellStyle();
-                    dataGridViewHeadersStyle.Font = new Font("Segoe UI Semibold", 11);
-                    dataGridViewHeadersStyle.BackColor = Color.Gainsboro;
+                    // Нахождение субъекта с самым большим изменением населения.
+                    FindMaxPopulationChange(dataGridView, tableData);
 
-                    // Установка стиля для хедеров
+                    // Установка стиля для клеточек.
+                    DataGridViewCellStyle dataGridViewStyle = new DataGridViewCellStyle();
+                    dataGridViewStyle.Font = new Font("Segoe UI", 10);
+                    dataGridViewStyle.BackColor = Color.White;
+                    dataGridView.DefaultCellStyle = dataGridViewStyle;
+
+                    // Установка стиля для клеточек-хедеров.
+                    DataGridViewCellStyle dataGridViewHeadersStyle = new DataGridViewCellStyle();
+                    dataGridViewHeadersStyle.Font = new Font("Segoe UI Semibold", 10);
+                    dataGridViewHeadersStyle.BackColor = Color.Gainsboro;
                     dataGridView.Columns[0].DefaultCellStyle = dataGridViewHeadersStyle;
                     dataGridView.Rows[0].DefaultCellStyle = dataGridViewHeadersStyle;
 
-                    // Вызов метода для создания графика.
+                    // Создания графика.
                     ExcelFileToChart(chartControl, tableData);
                 }
             }
@@ -44,12 +53,48 @@ namespace LabWork3
             }
         }
 
+        // Метод для нахождения субъекта с самым большим изменением населения за 15 лет.
+        void FindMaxPopulationChange (DataGridView dataGridView, DataSet tableData)
+        {
+            // Получение индекса последней колонки.
+            int lastColumnIndex = tableData.Tables[0].Columns.Count - 1;
+
+            // Создание списка со значением изменения численности каждого субъекта.
+            List<int> populatioтСhange = new List<int>();
+
+            // Проходится по всем субъектам и считает изменения для каждого из них.
+            for (int i = 1; i < tableData.Tables[0].Rows.Count; i++)
+            {
+                // Получение значения численности в начале.
+                string firstRowToString = tableData.Tables[0].Rows[i][1].ToString();
+                int.TryParse(firstRowToString, out int startPopulation);
+
+                // Получение значения численности в конце.
+                string lastRowToString = tableData.Tables[0].Rows[i][lastColumnIndex].ToString();
+                int.TryParse(lastRowToString, out int endPopulation);
+
+                // Добавляет значение в список.
+                populatioтСhange.Add(endPopulation - startPopulation);
+            }
+
+            // Нахождение максимального изменения и его индекса.
+            int maxChange = populatioтСhange.Max();
+            int maxChangeIndex = populatioтСhange.IndexOf(maxChange);
+
+            // Название субъекта с самым большим значением.
+            string maxChangeSubject = tableData.Tables[0].Rows[maxChangeIndex + 1][0].ToString();
+
+            // Вывод значения на экран.
+            MessageBox.Show($"Subject with largest population change in the last 15 years is {maxChangeSubject}.\nChange = {maxChange} people.");
+        }
+
+        // Метод для создания графика.
         public void ExcelFileToChart(Chart chartControl, DataSet tableData)
         {
-            // Вызов функции для добавления заголовка.
+            // Добавление заголовка для графика.
             AddChartTitle(chartControl);
 
-            // Создание графика.
+            // Проходится по строкам таблицы.
             for (int i = 1; i < tableData.Tables[0].Rows.Count; i++)
             {
                 // Считывает имена субъектов из первой колонки.
@@ -58,47 +103,48 @@ namespace LabWork3
                 // Создание новой серии с названием субъекта.
                 var series = new Series(seriesName);
 
-                // Устанавливает тип графика.
+                // Устанавливает тип графика для серии.
                 series.ChartType = SeriesChartType.RangeColumn;
 
-                // Проход по всем столбцам строки.
+                // Проходится по столбцам строки.
                 for (int j = 1; j < tableData.Tables[0].Columns.Count; j++)
                 {
-                    // Добавляет значение ячейки серии графика, где X - год, Y - популяция.
+                    // Добавляет значение ячейки к серии, где X - год, Y - популяция.
                     series.Points.AddXY(2023 - j, tableData.Tables[0].Rows[i][j]);
                 }
 
                 // Добавляет серию в график.
                 chartControl.Series.Add(series);
 
-                // Установка ширины и цвета обводки
+                // Установка ширины и цвета обводки.
                 chartControl.Series[seriesName].BorderWidth = 1;
                 chartControl.Series[seriesName].BorderColor = Color.Black;
             }
         }
 
-        // Добавляет заголовок для графика.
+        // Метод для добавления заголовока графика.
         public void AddChartTitle(Chart chartControl)
         {
-            // Установка параметров
-            Title title = new Title();
-            title.Alignment = ContentAlignment.TopLeft;
-            title.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
-            title.ForeColor = Color.DimGray;
-            title.Name = "Title1";
-            title.Text = "Population data by subjects";
+            Title title = new Title
+            {
+                Name = "Title1",
+                Text = "Population data by subjects",
+                Alignment = ContentAlignment.TopLeft,
+                Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold),
+                ForeColor = Color.DimGray
+            };
 
-            // Добавление
             chartControl.Titles.Add(title);
         }
 
+
         // Метод для проверки файла на расширение excel
-        public void ExcelFileCheck(OpenFileDialog openExcelFileDialog, DataGridView dataGridView, Chart chartControl)
+        public void LoadExcelFile(OpenFileDialog openExcelFileDialog, DataGridView dataGridView, Chart chartControl)
         {
-            // Фильтр для выбора файла
+            // Фильтр для excel файлов.
             openExcelFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
 
-            // Проверка на excel файлы
+            // Показывает окно выбора файла и получает имя выбранного файла.
             if (openExcelFileDialog.ShowDialog() == DialogResult.OK)
             {
                 // Если выбран excel файл
@@ -108,7 +154,7 @@ namespace LabWork3
                     string path = openExcelFileDialog.FileName;
 
                     // Вызов метода для чтения файла и вывода данных из него в таблицу и график.
-                    ExcelFileReader(path, dataGridView, chartControl);
+                    DisplayExcelData(path, dataGridView, chartControl);
                 }
                 else
                 {

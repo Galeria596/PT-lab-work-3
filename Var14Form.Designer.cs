@@ -42,6 +42,8 @@
             // 
             // gridPopulation
             // 
+            this.gridPopulation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridPopulation.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gridPopulation.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gridPopulation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPopulation.ColumnHeadersVisible = false;
