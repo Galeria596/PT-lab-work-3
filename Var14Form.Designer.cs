@@ -34,9 +34,10 @@
             this.gridPopulation = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnShowGrid = new System.Windows.Forms.Button();
-            this.chartPopulation = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartPopulation1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridPopulation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPopulation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPopulation1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridPopulation
@@ -44,10 +45,10 @@
             this.gridPopulation.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gridPopulation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPopulation.ColumnHeadersVisible = false;
-            this.gridPopulation.Location = new System.Drawing.Point(12, 12);
+            this.gridPopulation.Location = new System.Drawing.Point(236, 490);
             this.gridPopulation.Name = "gridPopulation";
             this.gridPopulation.RowHeadersVisible = false;
-            this.gridPopulation.Size = new System.Drawing.Size(303, 461);
+            this.gridPopulation.Size = new System.Drawing.Size(1336, 360);
             this.gridPopulation.TabIndex = 16;
             // 
             // openFileDialog1
@@ -57,35 +58,60 @@
             // btnShowGrid
             // 
             this.btnShowGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(184)))));
-            this.btnShowGrid.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnShowGrid.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnShowGrid.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(127)))), ((int)(((byte)(198)))));
             this.btnShowGrid.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(111)))), ((int)(((byte)(192)))));
             this.btnShowGrid.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShowGrid.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowGrid.ForeColor = System.Drawing.Color.White;
-            this.btnShowGrid.Location = new System.Drawing.Point(21, 490);
+            this.btnShowGrid.Location = new System.Drawing.Point(12, 790);
             this.btnShowGrid.Margin = new System.Windows.Forms.Padding(12, 14, 12, 14);
             this.btnShowGrid.Name = "btnShowGrid";
             this.btnShowGrid.Size = new System.Drawing.Size(200, 48);
             this.btnShowGrid.TabIndex = 19;
-            this.btnShowGrid.Text = "Show Population Stats";
+            this.btnShowGrid.Text = "Select file";
             this.btnShowGrid.UseVisualStyleBackColor = false;
             this.btnShowGrid.Click += new System.EventHandler(this.btnShowGrid_Click);
             // 
-            // chartPopulation
+            // chartPopulation1
             // 
-            this.chartPopulation.BackColor = System.Drawing.Color.Silver;
-            this.chartPopulation.BorderlineColor = System.Drawing.Color.DimGray;
+            this.chartPopulation1.BorderlineColor = System.Drawing.SystemColors.WindowText;
+            this.chartPopulation1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.Maximum = 2023D;
+            chartArea1.AxisX.Minimum = 2007D;
+            chartArea1.AxisX.Title = "Year";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.LineColor = System.Drawing.Color.Empty;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisY.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.Maximum = 14000000D;
+            chartArea1.AxisY.Minimum = 0D;
+            chartArea1.AxisY.Title = "Population";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.Name = "ChartArea1";
-            this.chartPopulation.ChartAreas.Add(chartArea1);
+            this.chartPopulation1.ChartAreas.Add(chartArea1);
+            legend1.BorderColor = System.Drawing.Color.Gray;
+            legend1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
-            this.chartPopulation.Legends.Add(legend1);
-            this.chartPopulation.Location = new System.Drawing.Point(367, 12);
-            this.chartPopulation.Name = "chartPopulation";
-            this.chartPopulation.Size = new System.Drawing.Size(1205, 461);
-            this.chartPopulation.TabIndex = 20;
-            this.chartPopulation.Text = " ";
+            this.chartPopulation1.Legends.Add(legend1);
+            this.chartPopulation1.Location = new System.Drawing.Point(12, 12);
+            this.chartPopulation1.Name = "chartPopulation1";
+            this.chartPopulation1.Size = new System.Drawing.Size(1560, 472);
+            this.chartPopulation1.TabIndex = 21;
+            this.chartPopulation1.Text = "chart1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 756);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(152, 20);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Select file to see stats";
             // 
             // GalyaForm
             // 
@@ -93,7 +119,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.chartPopulation);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chartPopulation1);
             this.Controls.Add(this.btnShowGrid);
             this.Controls.Add(this.gridPopulation);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,11 +128,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GalyaForm";
-            this.Text = "Population";
+            this.Text = "Population Data";
             this.Load += new System.EventHandler(this.Var14Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridPopulation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPopulation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPopulation1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -113,6 +141,8 @@
         private System.Windows.Forms.DataGridView gridPopulation;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnShowGrid;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartPopulation;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPopulation1;
+        private System.Windows.Forms.Label label1;
     }
 }
+

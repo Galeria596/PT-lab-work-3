@@ -1,161 +1,121 @@
 ﻿using ExcelDataReader;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace LabWork3
 {
-    // Класс с основыми методами для формы
     public class GalyaPopulation
     {
-        /*        public void meth()
-                {
-                    string populationTablePath = @"D:\programming-technologies\cheats_prices 1.xlsx";
-
-                    using (var stream = File.Open(populationTablePath, FileMode.Open, FileAccess.Read))
-                    {
-                        using (var reader = ExcelReaderFactory.CreateReader(stream))
-                        {
-
-                            // 2. Use the AsDataSet extension method
-                            var result = reader.AsDataSet();
-
-                            // The result of each spreadsheet is in result.Tables
-                            DataTable dt = result.Tables[0];
-
-                            for (int i = 0; i < dt.Rows.Count; i++)
-                            {
-                                Console.WriteLine();
-                                for (int y = 0; y < dt.Columns.Count; y++)
-                                {
-                                    Console.Write($"{dt.Rows[i][y].ToString()}\t");
-                                }
-                                Console.WriteLine();
-                            }
-                            //MessageBox.Show(dt.Rows[1][2].ToString());
-                            //Console.WriteLine(dt.Rows[0][0]);
-                        }
-                    }
-                }*/
-
-        // Считывает данные из Excel файла и выводит в DataGridView
-        public void ExcelFileReader(string path, DataGridView dataGrid, Chart chart)
+        // Считывает данные из Excel файла и выводит их в таблицу и график.
+        public void ExcelFileReader(string excelFilePath, DataGridView dataGridView, Chart chartControl)
         {
-
-            // Open the Excel file.
-            using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
+            try
             {
-                // Создание ридера для чтения Excel файла
-                var reader = ExcelReaderFactory.CreateReader(stream);
-
-                // Запись данных из таблиц в переменную
-                var result = reader.AsDataSet();
-
-                // Добавление первой таблицы в качестве источника для DataGrig
-                dataGrid.DataSource = result.Tables[0];
-
-                //var cellValue = result.Tables[0].Rows[1][0].ToString();
-                for (int i = 1; i < result.Tables[0].Rows.Count; i++)
+                // Открытие Excel файла.
+                using (var stream = File.Open(excelFilePath, FileMode.Open, FileAccess.Read))
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
-                    string cellName = result.Tables[0].Rows[i][0].ToString();
+                    // Запись данных из таблиц в переменную.
+                    var tableData = reader.AsDataSet();
 
-                    // Создание новой серии графика с именем субъекта
-                    var series = new Series(cellName);
+                    // Добавление таблицы с полученными данными в форму.
+                    dataGridView.DataSource = tableData.Tables[0];
 
-                    for (int j = 1; j < result.Tables[0].Columns.Count; j++)
-                    {
-                        series.Points.AddXY(2023-j, result.Tables[0].Rows[i][j]);
-                        Console.WriteLine(series.Points[j-1]);
-                    }
-                    chart.Series.Add(series);
-                    series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                    // Создание стиля для клеточек-хедеров
+                    DataGridViewCellStyle dataGridViewHeadersStyle = new DataGridViewCellStyle();
+                    dataGridViewHeadersStyle.Font = new Font("Segoe UI Semibold", 11);
+                    dataGridViewHeadersStyle.BackColor = Color.Gainsboro;
+
+                    // Установка стиля для хедеров
+                    dataGridView.Columns[0].DefaultCellStyle = dataGridViewHeadersStyle;
+                    dataGridView.Rows[0].DefaultCellStyle = dataGridViewHeadersStyle;
+
+                    // Вызов метода для создания графика.
+                    ExcelFileToChart(chartControl, tableData);
                 }
-                /*foreach (DataRow tableRow in result.Tables[0].Rows)
-                {
-                    // Проверка на 1 элемент, который содержит название колонки
-                    if (tableRow.ToString() != "Subject")
-                    {
-                        // Создание новой серии графика с именем субъекта
-                        var series = new Series(tableRow.ToString());
-
-                        var cols = result.Tables[0].Columns;
-
-                        //int subjectPopulationData = result.Tables[0].Columns;
-
-                        //series.Points.AddXY(tableColumns.ToString());
-
-                        //chart.Series.Add(series);
-                    }
-
-
-                }*/
-
-                /*foreach (DataColumn tableColumns in result.Tables[0].Columns)
-                {
-                    // Проверка на 1 элемент, который содержит название колонки
-                    if (tableColumns.ToString() != "Subject")
-                    {
-                        // Создание новой серии графика с именем субъекта
-                        var series = new Series(tableColumns. *//*.ToString()*//*);
-
-                        var cols = result.Tables[0].Columns;
-
-                        //int subjectPopulationData = result.Tables[0].Columns;
-
-                        //series.Points.AddXY(tableColumns.ToString());
-
-                        //chart.Series.Add(series);
-                    }
-
-
-                }*/
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reading Excel file: " + ex.Message);
             }
         }
 
-
-
-        /*
-        Выводит график по данным из таблицы Excel.
-        Еще не готов.
-        */
-        public void ChartReader(Chart chart, String cellName, int collumnsCount)
+        public void ExcelFileToChart(Chart chartControl, DataSet tableData)
         {
-            // Создание новой серии графика с именем субъекта
-            var seriesn = new Series(cellName);
+            // Вызов функции для добавления заголовка.
+            AddChartTitle(chartControl);
 
-            for (int i = 1; i < collumnsCount; i++)
+            // Создание графика.
+            for (int i = 1; i < tableData.Tables[0].Rows.Count; i++)
             {
-                // seriesn.Points.AddXY()
+                // Считывает имена субъектов из первой колонки.
+                string seriesName = tableData.Tables[0].Rows[i][0].ToString();
+
+                // Создание новой серии с названием субъекта.
+                var series = new Series(seriesName);
+
+                // Устанавливает тип графика.
+                series.ChartType = SeriesChartType.RangeColumn;
+
+                // Проход по всем столбцам строки.
+                for (int j = 1; j < tableData.Tables[0].Columns.Count; j++)
+                {
+                    // Добавляет значение ячейки серии графика, где X - год, Y - популяция.
+                    series.Points.AddXY(2023 - j, tableData.Tables[0].Rows[i][j]);
+                }
+
+                // Добавляет серию в график.
+                chartControl.Series.Add(series);
+
+                // Установка ширины и цвета обводки
+                chartControl.Series[seriesName].BorderWidth = 1;
+                chartControl.Series[seriesName].BorderColor = Color.Black;
             }
+        }
 
+        // Добавляет заголовок для графика.
+        public void AddChartTitle(Chart chartControl)
+        {
+            // Установка параметров
+            Title title = new Title();
+            title.Alignment = ContentAlignment.TopLeft;
+            title.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
+            title.ForeColor = Color.DimGray;
+            title.Name = "Title1";
+            title.Text = "Population data by subjects";
 
-            //chart.Series.Add(series);
+            // Добавление
+            chartControl.Titles.Add(title);
+        }
 
+        // Метод для проверки файла на расширение excel
+        public void ExcelFileCheck(OpenFileDialog openExcelFileDialog, DataGridView dataGridView, Chart chartControl)
+        {
+            // Фильтр для выбора файла
+            openExcelFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
 
+            // Проверка на excel файлы
+            if (openExcelFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Если выбран excel файл
+                if (Path.GetExtension(openExcelFileDialog.FileName).Equals(".xlsx"))
+                {
+                    // Получение пути к выбранному файлу.
+                    string path = openExcelFileDialog.FileName;
 
-            // create a new series and set its name
-            /*var series1 = new Series("Moscow");
-
-              // add data points to the series
-              series1.Points.AddXY(1, 2);
-              series1.Points.AddXY(2, 3);
-              series1.Points.AddXY(3, 4);
-
-              // set the chart type for the series
-              series1.ChartType = SeriesChartType.Line;
-
-              // add the series to the chart
-              chart.Series.Add(series1);*/
-
-
+                    // Вызов метода для чтения файла и вывода данных из него в таблицу и график.
+                    ExcelFileReader(path, dataGridView, chartControl);
+                }
+                else
+                {
+                    // Если выбран не excel файл
+                    MessageBox.Show("Please select an Excel file.");
+                }
+            }
         }
     }
 }

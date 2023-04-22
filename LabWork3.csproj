@@ -84,6 +84,7 @@
     <EmbeddedResource Include="Var14Form.resx">
       <DependentUpon>Var14Form.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
