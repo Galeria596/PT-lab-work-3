@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LabWork3
 {
@@ -19,6 +22,7 @@ namespace LabWork3
         public InflationForm()
         {
             InitializeComponent();
+            chart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,6 +71,39 @@ namespace LabWork3
         {
             DataTable table = tableCollection[Convert.ToString(toolStripComboBox1.SelectedItem)];
             dataGridView1.DataSource = table;
+        }
+
+        private void toolStripButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                double x = Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                double y = Convert.ToDouble(dataGridView1.Rows[i].Cells[13].Value);
+                chart.Series[0].Points.AddXY(x, y);
+            }
+        }
+
+        private void toolStripButtonCalc_Click(object sender, EventArgs e)
+        {
+            if (Price.Text != "" && dataGridView1 != null)
+            {
+                CalculationINF(dataGridView1);
+                Price2023.Text = Convert.ToString(Convert.ToInt32(Price.Text) * Inf);
+                Price2024.Text = Convert.ToString(Convert.ToInt32(Price.Text) * Inf * Inf);
+                Price2025.Text = Convert.ToString(Convert.ToInt32(Price.Text) * Inf * Inf * Inf);
+            }
+        }
+
+        private double Inf;
+        internal void CalculationINF(DataGridView dataGridView)
+        {
+            double sum = 0;
+            for (int i = 0; i < dataGridView.Rows.Count-1; i++)
+            {
+                sum += Convert.ToDouble(dataGridView.Rows[i].Cells[13].Value);
+            }
+            sum /= dataGridView.Rows.Count-1;
+            Inf = sum / 100 + 1;
         }
     }
 }
