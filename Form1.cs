@@ -34,7 +34,8 @@ namespace LabWork3
 
         private void btnPopulation_Click(object sender, EventArgs e)
         {
-
+            GalyaForm formPopulation = new GalyaForm();
+            formPopulation.Show();
         }
 
         // Смена языка на енгельский (Если идея - хуита, то можно потом делитнуть)
