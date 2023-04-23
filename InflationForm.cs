@@ -36,7 +36,6 @@ namespace LabWork3
                 {
                     // Запоминание имени файла
                     fileName = openFileDialog.FileName;
-                    //Text = openFileDialog.FileName;
                     // Вызов метода для чтения данных из файла Excel
                     OpenExcelFile(fileName);
                 }
@@ -79,7 +78,7 @@ namespace LabWork3
             // Установка индекса комбобокса на первую таблицу
             toolStripComboBox.SelectedIndex = 0;
         }
-
+        // Метод выбора таблиц
         private void toolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Получение выбранной таблицы
@@ -87,28 +86,54 @@ namespace LabWork3
             // Отображение данных таблицы в DataGridView
             dataGridView.DataSource = table;
         }
-
+        // Добавление точек на график
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
+            try
             {
-                double x = Convert.ToDouble(dataGridView.Rows[i].Cells[0].Value);
-                double y = Convert.ToDouble(dataGridView.Rows[i].Cells[13].Value);
-                chart.Series[0].Points.AddXY(x, y);
+                // Проходимся по всем строкам таблицы, кроме последней (которая содержит пустые ячейки)
+                for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
+                {
+                    // Получаем значения из ячеек с номером 0 (столбец X) и 13 (столбец Y)
+                    double x = Convert.ToDouble(dataGridView.Rows[i].Cells[0].Value);
+                    double y = Convert.ToDouble(dataGridView.Rows[i].Cells[13].Value);
+                    // Добавляем точку на график с полученными координатами
+                    chart.Series[0].Points.AddXY(x, y);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Если произошла ошибка, выводим сообщение об ошибке
+                MessageBox.Show(ex.Message,"Кажется вы выбрали не тот файл!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        // Метод расчета цен на будущие годы
         private void toolStripButtonCalc_Click(object sender, EventArgs e)
         {
-            if (Price.Text != "" && dataGridView != null)
+            try
             {
-                Inf.Calculation(dataGridView);
-                Price2023.Text = Convert.ToString(Convert.ToDouble(Price.Text) * Inf.InfRate);
-                Price2024.Text = Convert.ToString(Convert.ToDouble(Price.Text) * Inf.InfRate * Inf.InfRate);
-                Price2025.Text = Convert.ToString(Convert.ToDouble(Price.Text) * Inf.InfRate * Inf.InfRate * Inf.InfRate);
+                // Проверка, что поле ввода цены не пустое и была выбрана первая таблица
+                if (Price.Text != "" && dataGridView != null && toolStripComboBox.SelectedIndex == 0)
+                {
+                    // Вызов метода расчета инфляции на основе выбранной таблицы
+                    Inf.Calculation(dataGridView);
+                    // Вычисление цен на будущие годы на основе расчетов инфляции
+                    Price2023.Text = Convert.ToString(Math.Round(Convert.ToDouble(Price.Text) * Inf.InfRate, 2));
+                    Price2024.Text = Convert.ToString(Math.Round(Convert.ToDouble(Price.Text) * Inf.InfRate * Inf.InfRate, 2));
+                    Price2025.Text = Convert.ToString(Math.Round(Convert.ToDouble(Price.Text) * Inf.InfRate * Inf.InfRate * Inf.InfRate, 2));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Вывод сообщения об ошибке, если введенное значение не является числом с запятой
+                MessageBox.Show(ex.Message, "Поле принимает только тип double с запятой!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                    // Очистка поля ввода цены
+                    Price.Clear();
             }
         }
 
-        
     }
 }

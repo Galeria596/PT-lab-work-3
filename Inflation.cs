@@ -20,11 +20,15 @@ namespace LabWork3
         internal void Calculation(DataGridView dataGridView)
         {
             double sum = 0;
+            // Цикл по всем строкам таблицы
             for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
             {
+                // Добавляем значение из ячейки 13 каждой строки к сумме
                 sum += Convert.ToDouble(dataGridView.Rows[i].Cells[13].Value);
             }
+            // Вычисляем среднее арифметическое значение суммы
             sum /= dataGridView.Rows.Count - 1;
+            // Вычисляем коэффициент инфляции как отношение среднего значения к 100 и добавляем 1
             InfRate = sum / 100 + 1;
         }
     }

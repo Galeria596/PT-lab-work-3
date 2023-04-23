@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InflationForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -119,6 +119,7 @@
             this.Price.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(100, 28);
+            this.Price.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // toolStripButtonCalc
             // 
@@ -163,19 +164,19 @@
             // 
             // chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(659, 3);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Series";
-            this.chart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series";
+            this.chart.Series.Add(series1);
             this.chart.Size = new System.Drawing.Size(688, 444);
             this.chart.TabIndex = 6;
             this.chart.Text = "chart";
@@ -209,6 +210,7 @@
             this.Price2025.Name = "Price2025";
             this.Price2025.Size = new System.Drawing.Size(100, 22);
             this.Price2025.TabIndex = 9;
+            this.Price2025.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Price2023
             // 
@@ -216,6 +218,7 @@
             this.Price2023.Name = "Price2023";
             this.Price2023.Size = new System.Drawing.Size(100, 22);
             this.Price2023.TabIndex = 10;
+            this.Price2023.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Price2024
             // 
@@ -223,6 +226,7 @@
             this.Price2024.Name = "Price2024";
             this.Price2024.Size = new System.Drawing.Size(100, 22);
             this.Price2024.TabIndex = 11;
+            this.Price2024.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
