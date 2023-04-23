@@ -19,7 +19,7 @@ namespace LabWork3
             if (Environment.OSVersion.Version.Major >= 6) SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new Form1());
         }
         // Импорт функции из динамической библиотеки "user32.dll"
         [System.Runtime.InteropServices.DllImport("user32.dll")]
