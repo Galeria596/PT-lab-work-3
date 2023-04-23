@@ -27,15 +27,6 @@ namespace LabWork3
                     // Добавление таблицы с полученными данными в форму.
                     dataGridView.DataSource = tableData.Tables[0];
 
-                    // Нахождение субъекта с самым большим изменением населения.
-                    FindMaxPopulationChange(dataGridView, tableData);
-
-                    // Установка стиля для клеточек.
-                    DataGridViewCellStyle dataGridViewStyle = new DataGridViewCellStyle();
-                    dataGridViewStyle.Font = new Font("Segoe UI", 10);
-                    dataGridViewStyle.BackColor = Color.White;
-                    dataGridView.DefaultCellStyle = dataGridViewStyle;
-
                     // Установка стиля для клеточек-хедеров.
                     DataGridViewCellStyle dataGridViewHeadersStyle = new DataGridViewCellStyle();
                     dataGridViewHeadersStyle.Font = new Font("Segoe UI Semibold", 10);
@@ -43,8 +34,11 @@ namespace LabWork3
                     dataGridView.Columns[0].DefaultCellStyle = dataGridViewHeadersStyle;
                     dataGridView.Rows[0].DefaultCellStyle = dataGridViewHeadersStyle;
 
-                    // Создания графика.
+                    // Создание графика.
                     ExcelFileToChart(chartControl, tableData);
+
+                    // Нахождение субъекта с самым большим изменением населения.
+                    FindMaxPopulationChange(tableData);
                 }
             }
             catch (Exception ex)
@@ -54,7 +48,7 @@ namespace LabWork3
         }
 
         // Метод для нахождения субъекта с самым большим изменением населения за 15 лет.
-        void FindMaxPopulationChange (DataGridView dataGridView, DataSet tableData)
+        void FindMaxPopulationChange (DataSet tableData)
         {
             // Получение индекса последней колонки.
             int lastColumnIndex = tableData.Tables[0].Columns.Count - 1;
@@ -137,29 +131,31 @@ namespace LabWork3
             chartControl.Titles.Add(title);
         }
 
-
-        // Метод для проверки файла на расширение excel
-        public void LoadExcelFile(OpenFileDialog openExcelFileDialog, DataGridView dataGridView, Chart chartControl)
+        // Метод для проверки файла на расширение excel.
+        public void LoadExcelFile(DataGridView dataGridView, Chart chartControl)
         {
-            // Фильтр для excel файлов.
-            openExcelFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
-
-            // Показывает окно выбора файла и получает имя выбранного файла.
-            if (openExcelFileDialog.ShowDialog() == DialogResult.OK)
+            using (var excelFileDialog = new OpenFileDialog())
             {
-                // Если выбран excel файл
-                if (Path.GetExtension(openExcelFileDialog.FileName).Equals(".xlsx"))
-                {
-                    // Получение пути к выбранному файлу.
-                    string path = openExcelFileDialog.FileName;
+                // Фильтр для excel файлов.
+                excelFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
 
-                    // Вызов метода для чтения файла и вывода данных из него в таблицу и график.
-                    DisplayExcelData(path, dataGridView, chartControl);
-                }
-                else
+                // Показывает окно выбора файла и получает имя выбранного файла.
+                if (excelFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Если выбран не excel файл
-                    MessageBox.Show("Please select an Excel file.");
+                    // Если выбран excel файл
+                    if (Path.GetExtension(excelFileDialog.FileName).Equals(".xlsx"))
+                    {
+                        // Получение пути к выбранному файлу.
+                        string path = excelFileDialog.FileName;
+
+                        // Вызов метода для чтения файла и вывода данных из него в таблицу и график.
+                        DisplayExcelData(path, dataGridView, chartControl);
+                    }
+                    else
+                    {
+                        // Если выбран не excel файл
+                        MessageBox.Show("Please select an Excel file.");
+                    }
                 }
             }
         }

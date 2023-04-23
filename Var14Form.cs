@@ -19,7 +19,7 @@ namespace LabWork3
             var14Functions = new GalyaPopulation();
 
             // Проверка расширения выбранного файла и создание графика и таблицы.
-            var14Functions.LoadExcelFile(openFileDialog1, gridPopulation, chartPopulation1);
+            var14Functions.LoadExcelFile(gridPopulation, chartPopulation1);
         }
     }
 }

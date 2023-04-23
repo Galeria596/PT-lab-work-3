@@ -1,4 +1,7 @@
-﻿namespace LabWork3
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace LabWork3
 {
     partial class GalyaForm
     {
@@ -28,11 +31,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GalyaForm));
             this.gridPopulation = new System.Windows.Forms.DataGridView();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnShowGrid = new System.Windows.Forms.Button();
             this.chartPopulation1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,20 +45,26 @@
             // 
             // gridPopulation
             // 
+            this.gridPopulation.AllowUserToAddRows = false;
+            this.gridPopulation.AllowUserToDeleteRows = false;
             this.gridPopulation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gridPopulation.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gridPopulation.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gridPopulation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPopulation.ColumnHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridPopulation.DefaultCellStyle = dataGridViewCellStyle1;
             this.gridPopulation.Location = new System.Drawing.Point(236, 490);
             this.gridPopulation.Name = "gridPopulation";
             this.gridPopulation.RowHeadersVisible = false;
             this.gridPopulation.Size = new System.Drawing.Size(1336, 360);
             this.gridPopulation.TabIndex = 16;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // btnShowGrid
             // 
@@ -141,7 +150,6 @@
 
         #endregion
         private System.Windows.Forms.DataGridView gridPopulation;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnShowGrid;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPopulation1;
         private System.Windows.Forms.Label label1;
