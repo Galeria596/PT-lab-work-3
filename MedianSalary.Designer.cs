@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1114, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1175, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -75,12 +76,11 @@
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.файлToolStripMenuItem.Text = "Расчеты";
-            
             // 
             // ВыборФайлаToolStripMenuItem
             // 
             this.ВыборФайлаToolStripMenuItem.Name = "ВыборФайлаToolStripMenuItem";
-            this.ВыборФайлаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ВыборФайлаToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
             this.ВыборФайлаToolStripMenuItem.Text = "Выбор файла";
             this.ВыборФайлаToolStripMenuItem.Click += new System.EventHandler(this.ВыборФайлаToolStripMenuItem_Click);
             // 
@@ -104,22 +104,30 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(427, 108);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(675, 406);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Изменение мзп";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(736, 406);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart1";
+            title2.BackColor = System.Drawing.Color.AliceBlue;
+            title2.BorderColor = System.Drawing.Color.Blue;
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title2.Name = "Title1";
+            title2.Text = "Медианная зароботная плата";
+            this.chart1.Titles.Add(title2);
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.Color.AliceBlue;
             this.richTextBox1.Location = new System.Drawing.Point(427, 530);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(354, 100);
@@ -130,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1114, 680);
+            this.ClientSize = new System.Drawing.Size(1175, 680);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.dataGridView1);

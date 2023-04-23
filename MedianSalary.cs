@@ -1,17 +1,9 @@
 ﻿using ExcelDataReader;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Net;
+
 
 namespace LabWork3
 {
@@ -24,7 +16,8 @@ namespace LabWork3
         public MedianSalary()
         {
             InitializeComponent();
-            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+
 
         }
 
@@ -102,7 +95,7 @@ namespace LabWork3
             if (toolStripComboBox1.SelectedIndex == 3)
             {
                 //подсчет 
-                richTextBox1.Text = "Вычисление процента роста зарплат\n";
+                richTextBox1.Text = "Вычисление процента роста зарплат\n\n";
                 var k = Convert.ToDouble(dataGridView1.Rows[0].Cells[1].Value);
                 var g = Convert.ToDouble(dataGridView1.Rows[8].Cells[1].Value);
                 var r = (g-k)/k*100;
@@ -125,5 +118,7 @@ namespace LabWork3
                 }
             }
         }
+
+        
     }
 }
