@@ -30,7 +30,8 @@ namespace LabWork3
 
         private void btnSalary_Click(object sender, EventArgs e)
         {
-
+            Form form = new MedianSalary();
+            form.Show();
         }
 
         private void btnPopulation_Click(object sender, EventArgs e)

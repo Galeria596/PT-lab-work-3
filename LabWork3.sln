@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9CC788FA-701C-48FE-80FF-2CE0E42C06BC}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		MedianSalary.cs = MedianSalary.cs
+		MedianSalary.Designer.cs = MedianSalary.Designer.cs
+		MedianSalary.resx = MedianSalary.resx
 	EndProjectSection
 EndProject
 Global
