@@ -32,59 +32,59 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.Price = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButtonCalc = new System.Windows.Forms.ToolStripButton();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.Price2025 = new System.Windows.Forms.TextBox();
             this.Price2023 = new System.Windows.Forms.TextBox();
             this.Price2024 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.toolStrip.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(650, 444);
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersWidth = 51;
+            this.dataGridView.RowTemplate.Height = 24;
+            this.dataGridView.Size = new System.Drawing.Size(650, 444);
+            this.dataGridView.TabIndex = 5;
             // 
-            // toolStrip1
+            // toolStrip
             // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripComboBox1,
-            this.toolStripButton,
+            this.toolStripComboBox,
+            this.toolStripButtonAdd,
             this.toolStripLabel2,
             this.Price,
             this.toolStripButtonCalc});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1332, 28);
-            this.toolStrip1.TabIndex = 4;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(1332, 28);
+            this.toolStrip.TabIndex = 4;
+            this.toolStrip.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
@@ -92,21 +92,21 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(41, 25);
             this.toolStripLabel1.Text = "Лист";
             // 
-            // toolStripComboBox1
+            // toolStripComboBox
             // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
-            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+            this.toolStripComboBox.Name = "toolStripComboBox";
+            this.toolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.toolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox_SelectedIndexChanged);
             // 
-            // toolStripButton
+            // toolStripButtonAdd
             // 
-            this.toolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton.Image")));
-            this.toolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton.Name = "toolStripButton";
-            this.toolStripButton.Size = new System.Drawing.Size(133, 25);
-            this.toolStripButton.Text = "Добавить график";
-            this.toolStripButton.Click += new System.EventHandler(this.toolStripButton_Click);
+            this.toolStripButtonAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAdd.Image")));
+            this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAdd.Name = "toolStripButtonAdd";
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(133, 25);
+            this.toolStripButtonAdd.Text = "Добавить график";
+            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
             // toolStripLabel2
             // 
@@ -130,16 +130,16 @@
             this.toolStripButtonCalc.Text = "Рассчитать возможную стоимость";
             this.toolStripButtonCalc.Click += new System.EventHandler(this.toolStripButtonCalc_Click);
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1332, 28);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1332, 28);
+            this.menuStrip.TabIndex = 3;
+            this.menuStrip.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
             // 
@@ -156,10 +156,10 @@
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Excel|*.xlsx";
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "Excel|*.xlsx";
             // 
             // chart
             // 
@@ -170,6 +170,7 @@
             this.chart.Legends.Add(legend2);
             this.chart.Location = new System.Drawing.Point(659, 3);
             this.chart.Name = "chart";
+            this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";
@@ -179,19 +180,19 @@
             this.chart.TabIndex = 6;
             this.chart.Text = "chart";
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.59259F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.40741F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chart, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 148);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1350, 450);
-            this.tableLayoutPanel1.TabIndex = 7;
+            this.tableLayoutPanel.ColumnCount = 2;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.59259F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.40741F));
+            this.tableLayoutPanel.Controls.Add(this.dataGridView, 0, 0);
+            this.tableLayoutPanel.Controls.Add(this.chart, 1, 0);
+            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 148);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 1;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1350, 450);
+            this.tableLayoutPanel.TabIndex = 7;
             // 
             // label1
             // 
@@ -252,18 +253,18 @@
             this.Controls.Add(this.Price2023);
             this.Controls.Add(this.Price2025);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.tableLayoutPanel);
+            this.Controls.Add(this.toolStrip);
+            this.Controls.Add(this.menuStrip);
             this.Name = "InflationForm";
             this.Text = "InflationForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,17 +272,17 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.ToolStripButton toolStripButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Price2025;
         private System.Windows.Forms.TextBox Price2023;
