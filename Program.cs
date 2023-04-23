@@ -14,9 +14,16 @@ namespace LabWork3
         [STAThread]
         static void Main()
         {
+            // Если текущая операционная система является Windows Vista (версия 6) или более поздней версии,
+            // вызывается функция поддержки масштабирования DPI
+            if (Environment.OSVersion.Version.Major >= 6) SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
         }
+        // Импорт функции из динамической библиотеки "user32.dll"
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        // Объявление функции, сообщающей операционной системе о том, что приложение поддерживает масштабирование DPI 
+        private static extern bool SetProcessDPIAware();
     }
 }

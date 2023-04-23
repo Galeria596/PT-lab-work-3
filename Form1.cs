@@ -24,7 +24,8 @@ namespace LabWork3
 
         private void btnInflation_Click(object sender, EventArgs e)
         {
-
+            Form form = new InflationForm();
+            form.Show();
         }
 
         private void btnSalary_Click(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace LabWork3
             formPopulation.Show();
         }
 
-        // Смена языка на енгельский (Если идея - хуита, то можно потом делитнуть)
+        // Смена языка кнопок на английский
         private void btnLangEN_Click(object sender, EventArgs e)
         {
             if (btnInflation.Text != "Inflation" || btnPopulation.Text != "Population" || btnSalary.Text != "Median salary")
@@ -49,7 +50,7 @@ namespace LabWork3
             }
         }
 
-        // Смена языка на русский
+        // Смена языка кнопок на русский
         private void btnLangRU_Click(object sender, EventArgs e)
         {
             if (btnInflation.Text == "Inflation" || btnPopulation.Text == "Population" || btnSalary.Text == "Median salary")
