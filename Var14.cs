@@ -10,10 +10,10 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace LabWork3
 {
-    public class GalyaPopulation
+    internal class GalyaPopulation
     {
         // Считывает данные из Excel файла и выводит их в таблицу и график.
-        public void DisplayExcelData(string excelFilePath, DataGridView dataGridView, Chart chartControl)
+        private void DisplayExcelData(string excelFilePath, DataGridView dataGridView, Chart chartControl)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace LabWork3
         }
 
         // Метод для нахождения субъекта с самым большим изменением населения за 15 лет.
-        void FindMaxPopulationChange (DataSet tableData)
+        private void FindMaxPopulationChange (DataSet tableData)
         {
             // Получение индекса последней колонки.
             int lastColumnIndex = tableData.Tables[0].Columns.Count - 1;
@@ -79,11 +79,12 @@ namespace LabWork3
             string maxChangeSubject = tableData.Tables[0].Rows[maxChangeIndex + 1][0].ToString();
 
             // Вывод значения на экран.
-            MessageBox.Show($"Subject with largest population change in the last 15 years is {maxChangeSubject}.\nChange = {maxChange} people.");
+            MessageBox.Show($"Subject with largest population change in the last 15 years is {maxChangeSubject}.\nChange =" +
+                $"{maxChange} people.");
         }
 
         // Метод для создания графика.
-        public void ExcelFileToChart(Chart chartControl, DataSet tableData)
+        private void ExcelFileToChart(Chart chartControl, DataSet tableData)
         {
             // Добавление заголовка для графика.
             AddChartTitle(chartControl);
@@ -117,7 +118,7 @@ namespace LabWork3
         }
 
         // Метод для добавления заголовока графика.
-        public void AddChartTitle(Chart chartControl)
+        private void AddChartTitle(Chart chartControl)
         {
             Title title = new Title
             {
@@ -132,7 +133,7 @@ namespace LabWork3
         }
 
         // Метод для проверки файла на расширение excel.
-        public void LoadExcelFile(DataGridView dataGridView, Chart chartControl)
+        internal void LoadExcelFile(DataGridView dataGridView, Chart chartControl)
         {
             using (var excelFileDialog = new OpenFileDialog())
             {
